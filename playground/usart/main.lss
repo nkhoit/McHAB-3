@@ -1,0 +1,208 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000012  00800100  0000011c  00000190  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000011c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .stab         000006cc  00000000  00000000  000001a4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000054  00000000  00000000  00000870  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .comment      00000011  00000000  00000000  000008c4  2**0
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000028  00000000  00000000  000008d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000024a  00000000  00000000  000008fd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000133  00000000  00000000  00000b47  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000000ea  00000000  00000000  00000c7a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000044  00000000  00000000  00000d64  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000000f4  00000000  00000000  00000da8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000003e  00000000  00000000  00000e9c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000018  00000000  00000000  00000eda  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ec e1       	ldi	r30, 0x1C	; 28
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a2 31       	cpi	r26, 0x12	; 18
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 62 00 	call	0xc4	; 0xc4 <main>
+  8e:	0c 94 8c 00 	jmp	0x118	; 0x118 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <USART_init>:
+
+/* Initializes the USART (RS232 interface) */
+ 
+void USART_init( unsigned int ubrr )
+{
+UBRR0H = (unsigned char)(ubrr>>8);
+  96:	90 93 c5 00 	sts	0x00C5, r25
+UBRR0L = (unsigned char)ubrr;
+  9a:	80 93 c4 00 	sts	0x00C4, r24
+UCSR0B = (1 << TXEN0);     // Enable RX, TX & RX interrupt
+  9e:	88 e0       	ldi	r24, 0x08	; 8
+  a0:	80 93 c1 00 	sts	0x00C1, r24
+UCSR0C = (3 << UCSZ00);    //asynchronous 8 N 1
+  a4:	86 e0       	ldi	r24, 0x06	; 6
+  a6:	80 93 c2 00 	sts	0x00C2, r24
+  aa:	08 95       	ret
+
+000000ac <USART_tx_string>:
+}
+
+/* Send some data to the serial port */
+
+void USART_tx_string( char *data )
+{
+  ac:	fc 01       	movw	r30, r24
+while ((*data != '\0'))
+  ae:	06 c0       	rjmp	.+12     	; 0xbc <USART_tx_string+0x10>
+   {
+      while (!(UCSR0A & (1 <<UDRE0)));
+  b0:	90 91 c0 00 	lds	r25, 0x00C0
+  b4:	95 ff       	sbrs	r25, 5
+  b6:	fc cf       	rjmp	.-8      	; 0xb0 <USART_tx_string+0x4>
+      UDR0 = *data;
+  b8:	80 93 c6 00 	sts	0x00C6, r24
+
+/* Send some data to the serial port */
+
+void USART_tx_string( char *data )
+{
+while ((*data != '\0'))
+  bc:	81 91       	ld	r24, Z+
+  be:	81 11       	cpse	r24, r1
+  c0:	f7 cf       	rjmp	.-18     	; 0xb0 <USART_tx_string+0x4>
+   {
+      while (!(UCSR0A & (1 <<UDRE0)));
+      UDR0 = *data;
+      data++;
+   }   
+}
+  c2:	08 95       	ret
+
+000000c4 <main>:
+/*  MAIN */
+
+int main(void)
+{
+
+USART_init(51);
+  c4:	83 e3       	ldi	r24, 0x33	; 51
+  c6:	90 e0       	ldi	r25, 0x00	; 0
+  c8:	0e 94 4b 00 	call	0x96	; 0x96 <USART_init>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  cc:	2f e7       	ldi	r18, 0x7F	; 127
+  ce:	8a e1       	ldi	r24, 0x1A	; 26
+  d0:	96 e0       	ldi	r25, 0x06	; 6
+  d2:	21 50       	subi	r18, 0x01	; 1
+  d4:	80 40       	sbci	r24, 0x00	; 0
+  d6:	90 40       	sbci	r25, 0x00	; 0
+  d8:	e1 f7       	brne	.-8      	; 0xd2 <main+0xe>
+  da:	00 c0       	rjmp	.+0      	; 0xdc <main+0x18>
+  dc:	00 00       	nop
+
+_delay_ms(250);
+USART_tx_string("Connected!\r\n");
+  de:	80 e0       	ldi	r24, 0x00	; 0
+  e0:	91 e0       	ldi	r25, 0x01	; 1
+  e2:	0e 94 56 00 	call	0xac	; 0xac <USART_tx_string>
+  e6:	2f e7       	ldi	r18, 0x7F	; 127
+  e8:	8a e1       	ldi	r24, 0x1A	; 26
+  ea:	96 e0       	ldi	r25, 0x06	; 6
+  ec:	21 50       	subi	r18, 0x01	; 1
+  ee:	80 40       	sbci	r24, 0x00	; 0
+  f0:	90 40       	sbci	r25, 0x00	; 0
+  f2:	e1 f7       	brne	.-8      	; 0xec <main+0x28>
+  f4:	00 c0       	rjmp	.+0      	; 0xf6 <main+0x32>
+  f6:	00 00       	nop
+_delay_ms(250);
+
+while (1)                 // do until finished or broken
+   {
+      USART_tx_string("U");   //show me the test
+  f8:	8d e0       	ldi	r24, 0x0D	; 13
+  fa:	91 e0       	ldi	r25, 0x01	; 1
+  fc:	0e 94 56 00 	call	0xac	; 0xac <USART_tx_string>
+ 100:	2f e7       	ldi	r18, 0x7F	; 127
+ 102:	8a e1       	ldi	r24, 0x1A	; 26
+ 104:	96 e0       	ldi	r25, 0x06	; 6
+ 106:	21 50       	subi	r18, 0x01	; 1
+ 108:	80 40       	sbci	r24, 0x00	; 0
+ 10a:	90 40       	sbci	r25, 0x00	; 0
+ 10c:	e1 f7       	brne	.-8      	; 0x106 <main+0x42>
+ 10e:	00 c0       	rjmp	.+0      	; 0x110 <main+0x4c>
+ 110:	00 00       	nop
+      _delay_ms(250);         // wait .25 seconds
+      USART_tx_string("T");
+ 112:	8f e0       	ldi	r24, 0x0F	; 15
+ 114:	91 e0       	ldi	r25, 0x01	; 1
+ 116:	e5 cf       	rjmp	.-54     	; 0xe2 <main+0x1e>
+
+00000118 <_exit>:
+ 118:	f8 94       	cli
+
+0000011a <__stop_program>:
+ 11a:	ff cf       	rjmp	.-2      	; 0x11a <__stop_program>
